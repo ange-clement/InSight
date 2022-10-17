@@ -46,8 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a718423c8cd26d449b5f02937c68f60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actions:
-  - {fileID: 0}
+  actions: []
   invertedActions: []
   nbInZone: 0
   activateNb: 1

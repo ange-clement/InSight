@@ -6,6 +6,8 @@ public abstract class ActionableByVision: Actionable
 {
     public Collider attachedCollider;
     public MeshFilter attachedMeshFilter;
+
+    public float visionCheckFactor = 1.0f;
     public bool blocksVision = false;
 
     private void Start()

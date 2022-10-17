@@ -272,6 +272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachedCollider: {fileID: 9075362998159678679}
   attachedMeshFilter: {fileID: 9075362998159678677}
+  visionCheckFactor: 0.49
   blocksVision: 0
 --- !u!1 &9075362998284559223
 GameObject:

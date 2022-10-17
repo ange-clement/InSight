@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AndGate : Actionable
+public class CountingGate : Actionable
 {
     public int nbActivate = 0;
     public int nbToActivate = 2;
