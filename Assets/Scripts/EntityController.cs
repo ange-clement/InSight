@@ -6,29 +6,34 @@ public class EntityController : MonoBehaviour
 {
     public float maxForce = 40f;
 
-    private Transform entity;
-    private Transform target;
-    private Rigidbody rb;
+    public Transform entity;
+    public Transform target;
+    public Transform generator;
+    public float targetOffset;
 
-    private Transform generator;
+    public bool followWhenReleased = true;
+
+    [HideInInspector] public Rigidbody rb;
+
+    [HideInInspector] public bool isGrabed = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        target = transform.GetChild(0);
-        generator = transform.GetChild(1);
-        entity = transform.GetChild(2);
         rb = entity.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 direction = target.position - entity.transform.position;
-        float magnitude = direction.sqrMagnitude;
-        if (magnitude > 0.05f)
+        if (followWhenReleased || isGrabed)
         {
-            rb.AddForce(direction.normalized * Mathf.Clamp((magnitude+1.0f) * 2.0f, 0, maxForce), ForceMode.Acceleration);
+            Vector3 direction = target.position - entity.transform.position;
+            float magnitude = direction.sqrMagnitude;
+            if (magnitude > 0.05f)
+            {
+                rb.AddForce(direction.normalized * Mathf.Clamp((magnitude+1.0f) * 2.0f, 0, maxForce), ForceMode.Acceleration);
+            }
         }
     }
 

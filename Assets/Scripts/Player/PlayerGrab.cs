@@ -10,8 +10,7 @@ public class PlayerGrab : MonoBehaviour
     public Color pointerColor;
     public Color grabingColor;
 
-    private GameObject entity;
-    private Transform entityTarget;
+    private EntityController entity;
     private bool drag = false;
     private int ignoreEntityLayerMask = ~(1 << 6 | 1 << 2);
 
@@ -33,8 +32,8 @@ public class PlayerGrab : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Entity"))
                 {
-                    entity = hit.collider.gameObject;
-                    entityTarget = entity.transform.parent.GetChild(0);
+                    entity = hit.collider.transform.parent.GetComponent<EntityController>();
+                    entity.isGrabed = true;
                     drag = true;
 
                     pointer.color = grabingColor;
@@ -47,6 +46,10 @@ public class PlayerGrab : MonoBehaviour
         }
         if (Input.GetButtonUp("Fire1"))
         {
+            if (entity != null)
+            {
+                entity.isGrabed = false;
+            }
             drag = false;
 
             pointer.color = pointerColor;
@@ -57,7 +60,7 @@ public class PlayerGrab : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, 1000f, ignoreEntityLayerMask))
             {
-                entityTarget.transform.position = hit.point + hit.normal * entityTarget.parent.localScale.x;
+                entity.target.transform.position = hit.point + hit.normal * entity.targetOffset;
             }
         }
     }

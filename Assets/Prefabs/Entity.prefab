@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 281583318272061426}
   m_Layer: 0
-  m_Name: Model
+  m_Name: GeneratorModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23,14 +23,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2838795134420335522}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9075362997872036961}
   - {fileID: 9075362998950903088}
-  m_Father: {fileID: 9075362998284559222}
+  m_Father: {fileID: 9075362998995629675}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9075362997872036962
@@ -245,7 +245,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &170129968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,7 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9075362998284559222}
   m_Layer: 0
-  m_Name: Generator
+  m_Name: GeneratorPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -300,8 +300,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 281583318272061426}
+  m_Children: []
   m_Father: {fileID: 9075362998995629675}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -465,8 +464,9 @@ Transform:
   - {fileID: 9075362998747479140}
   - {fileID: 9075362998284559222}
   - {fileID: 9075362998159678676}
+  - {fileID: 281583318272061426}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1783286971
 MonoBehaviour:
@@ -481,3 +481,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxForce: 40
+  entity: {fileID: 9075362998159678676}
+  target: {fileID: 9075362998747479140}
+  generator: {fileID: 9075362998284559222}
+  targetOffset: 1
+  followWhenReleased: 1
+  rb: {fileID: 0}
+  isGrabed: 0

@@ -94,9 +94,8 @@ public class VisionChecker : MonoBehaviour
         actions = FindObjectsOfType<ActionableByVision>();
     }
 
-    // Update is called once per frame
     // Maybe check less often then once per frame
-    void Update()
+    void FixedUpdate()
     {
         foreach (ActionableByVision action in actions)
         {
