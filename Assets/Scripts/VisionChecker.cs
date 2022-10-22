@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class VisionChecker : MonoBehaviour
 {
+    public bool debugRay = true;
+
     private VisionEmitter[] visions;
     private ActionableByVision[] actions;
 
-    /*private Vector3[] entityBounds = new Vector3[] {
+    private Vector3[] entityBounds = new Vector3[] {
         new Vector3( 0f,  0f,  0f),
         new Vector3(-1f, -1f, -1f),
         new Vector3(-1f, -1f,  1f),
@@ -17,7 +19,7 @@ public class VisionChecker : MonoBehaviour
         new Vector3( 1f, -1f,  1f),
         new Vector3( 1f,  1f, -1f),
         new Vector3( 1f,  1f,  1f)
-    };*/
+    };
 
     bool CheckIfVisibleByEmitter(ActionableByVision action, VisionEmitter vision)
     {
@@ -36,15 +38,17 @@ public class VisionChecker : MonoBehaviour
         }
 
         //2. and check if not behind other objects
-        Vector3[] entityVertices = action.attachedMeshFilter.mesh.vertices;
+        //Vector3[] entityVertices = action.attachedMeshFilter.mesh.vertices;
 
         // Raycast for each vertex of the mesh. The mesh must be within the collider.
-        for (int i = 0, length = entityVertices.Length; i < length; i++)
+        for (int i = 0, length = entityBounds.Length; i < length; i++)
         {
-            Vector3 vertexWorld = action.transform.TransformPoint(entityVertices[i]);
+            Vector3 vertexWorld = action.transform.TransformPoint(entityBounds[i] * action.visionCheckFactor);
             Vector3 rayDirection = vertexWorld - visionCamera.transform.position;
 
-            Debug.DrawRay(visionCamera.transform.position, rayDirection, Color.red, 0.1f);
+            if (debugRay)
+                Debug.DrawRay(visionCamera.transform.position, rayDirection, Color.red, 0.1f);
+
             RaycastHit hit;
             if (Physics.Raycast(visionCamera.transform.position, rayDirection, out hit))
             {
@@ -53,7 +57,9 @@ public class VisionChecker : MonoBehaviour
                 ActionableByVision hitActionable = hit.collider.GetComponent<ActionableByVision>();
                 while (hitActionable != null && !hitActionable.blocksVision && hit.collider.gameObject != action.gameObject)
                 {
-                    Debug.DrawRay(hit.point, rayDirection, Color.green, 0.1f);
+                    if (debugRay)
+                        Debug.DrawRay(hit.point, rayDirection, Color.green, 0.1f);
+
                     if (!Physics.Raycast(hit.point + rayDirection.normalized * 0.01f, rayDirection, out hit))
                     {
                         break;
@@ -94,9 +100,8 @@ public class VisionChecker : MonoBehaviour
         actions = FindObjectsOfType<ActionableByVision>();
     }
 
-    // Update is called once per frame
     // Maybe check less often then once per frame
-    void Update()
+    void FixedUpdate()
     {
         foreach (ActionableByVision action in actions)
         {

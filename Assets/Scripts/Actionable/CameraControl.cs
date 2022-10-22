@@ -26,7 +26,6 @@ public class CameraControl : Actionable
             rotation.y = rotation.y - 360;
         }
         Mathf.Clamp(rotation.y, -yRotationLimit, yRotationLimit);
-        Debug.Log(rotation);
     }
 
     public override void Activate()

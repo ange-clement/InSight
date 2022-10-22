@@ -17,6 +17,10 @@ public class ResetEntity : ActionableByVision
 
     public override void Deactivate()
     {
-        controller.OnCameraOut();
+        transform.rotation = Quaternion.identity;
+        transform.position = controller.generator.position;
+        controller.target.position = controller.generator.position;
+        controller.rb.ResetInertiaTensor();
+        controller.rb.velocity = Vector3.zero;
     }
 }
