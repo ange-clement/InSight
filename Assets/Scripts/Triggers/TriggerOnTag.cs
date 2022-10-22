@@ -23,10 +23,6 @@ public class TriggerOnTag : MonoBehaviour
                 action.Deactivate();
             }
         }
-        else
-        {
-            Debug.Log("no collision with " + tag + " (expected " + tagToTrigger + ")");
-        }
     }
 
     private void DeactivateAllIfTag(string tag)
