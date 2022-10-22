@@ -10,9 +10,9 @@ public class TriggerOnTag : MonoBehaviour
     public Actionable[] events;
     public Actionable[] invertedEvents;
 
-    private void OnTriggerEnter(Collider other)
+    private void ActivateAllIfTag(string tag)
     {
-        if (other.CompareTag(tagToTrigger))
+        if (tag.Equals(tagToTrigger))
         {
             foreach (Actionable action in events)
             {
@@ -21,22 +21,45 @@ public class TriggerOnTag : MonoBehaviour
             foreach (Actionable action in invertedEvents)
             {
                 action.Deactivate();
+            }
+        }
+        else
+        {
+            Debug.Log("no collision with " + tag + " (expected " + tagToTrigger + ")");
+        }
+    }
+
+    private void DeactivateAllIfTag(string tag)
+    {
+        if (callsDeactivate && tag.Equals(tagToTrigger))
+        {
+            foreach (Actionable action in events)
+            {
+                action.Deactivate();
+            }
+            foreach (Actionable action in invertedEvents)
+            {
+                action.Activate();
             }
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        ActivateAllIfTag(other.tag);
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        ActivateAllIfTag(collision.collider.tag);
+    }
+
     private void OnTriggerExit(Collider other)
     {
-        if (callsDeactivate && other.CompareTag(tagToTrigger))
-        {
-            foreach (Actionable action in events)
-            {
-                action.Deactivate();
-            }
-            foreach (Actionable action in invertedEvents)
-            {
-                action.Activate();
-            }
-        }
+        DeactivateAllIfTag(other.tag);
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        DeactivateAllIfTag(collision.collider.tag);
     }
 }

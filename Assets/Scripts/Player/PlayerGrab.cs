@@ -33,7 +33,7 @@ public class PlayerGrab : MonoBehaviour
                 if (hit.collider.CompareTag("Entity"))
                 {
                     entity = hit.collider.transform.parent.GetComponent<EntityController>();
-                    entity.isGrabed = true;
+                    entity.IsGrabed = true;
                     drag = true;
 
                     pointer.color = grabingColor;
@@ -48,7 +48,7 @@ public class PlayerGrab : MonoBehaviour
         {
             if (entity != null)
             {
-                entity.isGrabed = false;
+                entity.IsGrabed = false;
             }
             drag = false;
 

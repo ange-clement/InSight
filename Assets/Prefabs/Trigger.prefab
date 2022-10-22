@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8176328620994027590}
   - component: {fileID: 8176328620994027589}
   - component: {fileID: 8176328620994027588}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,5 +60,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagToTrigger: Player
   callsDeactivate: 1
-  events: []
+  events:
+  - {fileID: 0}
   invertedEvents: []
