@@ -31,6 +31,7 @@ public class PathMovement : Actionable
     public override void Deactivate()
     {
         isActivated = false;
+        objectSpeed = Vector3.zero;
     }
 
     private void UpdateTarget()
