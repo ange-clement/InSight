@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TestChangementNiveauAnge/Level_2_test.unity
     guid: 7da86b353f66f5640ad3b057045e0059
   - enabled: 1
+    path: Assets/Scenes/TestChangementNiveauAnge/TestCinemachine.unity
+    guid: 5ab129994fb8c2349bee8c81bb92ffec
+  - enabled: 1
     path: Assets/Scenes/TestChangementNiveauAnge/TestSceneAnge.unity
     guid: c77ca2397e76e7f44981d9a7b2d5f996
   m_configObjects: {}
