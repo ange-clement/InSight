@@ -13,13 +13,15 @@ public class PlayerMovement : MonoBehaviour
 
     public int nbFramesJump = 20;
 
-    private Vector3 playerVelocity;
+
+    public Vector3 playerVelocity;
     private bool groundedPlayer;
     private CharacterController controller;
 
-    private int framesSincePlayerJumped;
+    private float currentGravity;
+    private PathMovement moovingObject = null;
 
-    public float currentGravity;
+    private int framesSincePlayerJumped;
 
     private void Start()
     {
@@ -34,6 +36,13 @@ public class PlayerMovement : MonoBehaviour
 
 
 
+        Vector3 externalVelocity = Vector3.zero;
+        if (moovingObject != null)
+        {
+            groundedPlayer = true;
+            externalVelocity = moovingObject.ObjectSpeed;
+        }
+
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * playerSpeed;
 
         if (Input.GetButtonDown("Jump"))
@@ -45,20 +54,41 @@ public class PlayerMovement : MonoBehaviour
         {
             currentGravity = gravityValue;
             playerVelocity.y += jumpSpeed;
+            RemoveExternalObject();
         }
-        if (groundedPlayer && playerVelocity.y < 0)
+        if (groundedPlayer)
         {
-            playerVelocity.y = 0f;
+            if (playerVelocity.y < 0)
+            {
+                playerVelocity.y = 0;
+            }
+
+            playerVelocity.x = playerVelocity.x * 0.5f;
+            playerVelocity.z = playerVelocity.z * 0.5f;
         }
         if (Input.GetButtonUp("Jump") || playerVelocity.y < 0)
         {
             currentGravity = gravityValue * gravityMultiplier;
         }
 
-
-
-        controller.Move((transform.TransformDirection(move) + playerVelocity) * Time.deltaTime);
+        controller.Move((transform.TransformDirection(move) + playerVelocity + externalVelocity) * Time.deltaTime);
 
         framesSincePlayerJumped++;
+    }
+
+    public void SetExternalObject(PathMovement externalObject)
+    {
+        moovingObject = externalObject;
+    }
+
+    public void RemoveExternalObject()
+    {
+        if (moovingObject != null)
+        {
+            Vector3 objspeed = moovingObject.ObjectSpeed;
+            playerVelocity += 1.8f * new Vector3(objspeed.x, 0f, objspeed.z);
+            playerVelocity.y += Mathf.Max(0f, objspeed.y);
+            moovingObject = null;
+        }
     }
 }

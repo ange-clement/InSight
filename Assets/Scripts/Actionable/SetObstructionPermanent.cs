@@ -7,7 +7,6 @@ public class SetObstructionPermanent : Actionable
     public ExpandObstruction ob;
     public override void Activate()
     {
-        Debug.Log("AAAA");
         ob.isPermanent = true;
     }
 

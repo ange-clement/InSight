@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ResetEntity : ActionableByVision
 {
-    private EntityController controller;
+    public EntityController controller;
 
     private void Start()
     {
@@ -23,5 +23,7 @@ public class ResetEntity : ActionableByVision
         //controller.rb.ResetInertiaTensor();
         controller.rb.velocity = Vector3.zero;
         controller.rb.angularVelocity = Vector3.zero;
+
+        controller.ResetTargetParent();
     }
 }

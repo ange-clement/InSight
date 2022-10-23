@@ -39,14 +39,12 @@ public class EntityController : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = entity.GetComponent<Rigidbody>();
         dragWhenReleased = rb.drag;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (followWhenReleased || IsGrabed)
@@ -57,6 +55,28 @@ public class EntityController : MonoBehaviour
             {
                 rb.AddForce(direction.normalized* Mathf.Clamp((magnitude+1.0f) * 2.0f, 0, maxForce), ForceMode.Acceleration);
             }
+        }
+    }
+
+    public void SetTargetParent(Transform parent, Vector3 pos)
+    {
+        if (target.parent != parent)
+        {
+            target.parent = parent;
+            target.localPosition = pos * targetOffset;
+        }
+    }
+
+    public void SetTargetParent(Transform parent)
+    {
+        SetTargetParent(parent, parent.position);
+    }
+
+    public void ResetTargetParent()
+    {
+        if (target.parent != transform)
+        {
+            target.parent = transform;
         }
     }
 }
