@@ -78,6 +78,10 @@ public class VisionChecker : MonoBehaviour
     //Returns true if the object is visible by a vision emitter
     bool CheckIfVisible(ActionableByVision action)
     {
+        if (action.forceSeen)
+        {
+            return true;
+        }
         foreach (VisionEmitter vision in visions)
         {
             if (CheckIfVisibleByEmitter(action, vision)) {

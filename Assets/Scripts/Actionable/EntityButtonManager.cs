@@ -10,7 +10,7 @@ public class EntityButtonManager : ActionableByEnergy
     public int nbInZone = 0;
     public int activateNb = 1;
 
-    public override void Activate()
+    public override void Activate(GameObject collisionObject)
     {
         nbInZone++;
         if (nbInZone == activateNb)
@@ -26,7 +26,7 @@ public class EntityButtonManager : ActionableByEnergy
         }
     }
 
-    public override void Deactivate()
+    public override void Deactivate(GameObject collisionObject)
     {
         nbInZone--;
         if (nbInZone != activateNb)

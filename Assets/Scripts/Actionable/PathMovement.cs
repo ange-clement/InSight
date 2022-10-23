@@ -16,7 +16,7 @@ public class PathMovement : Actionable
 
     private Transform target;
     private int currentTarget = 0;
-    public float currentDecelDist;
+    private float currentDecelDist;
 
     private float speed = 0f;
 

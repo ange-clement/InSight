@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ActionableByEnergy : Actionable
+public abstract class ActionableByEnergy : ActionableWithTrigger
 {
 
 }

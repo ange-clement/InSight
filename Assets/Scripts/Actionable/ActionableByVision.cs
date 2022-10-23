@@ -9,6 +9,7 @@ public abstract class ActionableByVision: Actionable
 
     public float visionCheckFactor = 1.0f;
     public bool blocksVision = false;
+    public bool forceSeen = false;
 
     private void Start()
     {

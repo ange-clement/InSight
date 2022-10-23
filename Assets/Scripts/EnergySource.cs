@@ -9,7 +9,7 @@ public class EnergySource : MonoBehaviour
         ActionableByEnergy action = collision.gameObject.GetComponent<ActionableByEnergy>();
         if (action != null)
         {
-            action.Activate();
+            action.Activate(gameObject);
         }
     }
 
@@ -18,7 +18,7 @@ public class EnergySource : MonoBehaviour
         ActionableByEnergy action = collision.gameObject.GetComponent<ActionableByEnergy>();
         if (action != null)
         {
-            action.Deactivate();
+            action.Deactivate(gameObject);
         }
     }
 
@@ -27,7 +27,7 @@ public class EnergySource : MonoBehaviour
         ActionableByEnergy action = other.gameObject.GetComponent<ActionableByEnergy>();
         if (action != null)
         {
-            action.Activate();
+            action.Activate(gameObject);
         }
     }
 
@@ -36,7 +36,7 @@ public class EnergySource : MonoBehaviour
         ActionableByEnergy action = other.gameObject.GetComponent<ActionableByEnergy>();
         if (action != null)
         {
-            action.Deactivate();
+            action.Deactivate(gameObject);
         }
     }
 }
