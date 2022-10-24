@@ -2,21 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayParticleAndSound : Actionable
+public class PlayEffects : Actionable
 {
-    public float timer;
 
-    public float timerLeft;
-
-    private void Update()
+    public void setVolume(float volume)
     {
-        if (timerLeft > 0)
-            timerLeft -= Time.deltaTime;
-    }
-
-    public bool isPlaying()
-    {
-        return timerLeft > 0;
+        AudioSource[] audios = GetComponentsInChildren<AudioSource>();
+        foreach (AudioSource audio in audios)
+        {
+            audio.volume = volume;
+        }
     }
 
     public override void Activate()
@@ -31,8 +26,6 @@ public class PlayParticleAndSound : Actionable
         {
             particle.Play();
         }
-
-        timerLeft = timer;
     }
 
     public override void Deactivate()

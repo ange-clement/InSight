@@ -22,6 +22,8 @@ public class ExpandObstruction : ActionableByVision
         {
             float expandAmount = (Time.time - startExpensionTime) * expandSpeed;
             transform.localScale = defaultScale + Vector3.one * expandAmount * expandAmount;
+
+            base.effectActivate.setVolume(expandAmount * 0.5f);
         }
     }
 
@@ -31,6 +33,7 @@ public class ExpandObstruction : ActionableByVision
         {
             isSeen = true;
             startExpensionTime = Time.time;
+            base.Activate();
         }
     }
 
@@ -41,6 +44,8 @@ public class ExpandObstruction : ActionableByVision
             isSeen = false;
             startExpensionTime = -1;
             transform.localScale = defaultScale;
+
+            base.Deactivate();
         }
     }
 }

@@ -13,6 +13,8 @@ public class PathMovement : Actionable
     public float maxDegreesDelta = 180f;
     public bool isActivated = false;
 
+    public PlayEffects pickupEffects;
+
 
     private Transform target;
     private int currentTarget = 0;
@@ -25,11 +27,13 @@ public class PathMovement : Actionable
 
     public override void Activate()
     {
+        base.Activate();
         isActivated = true;
     }
 
     public override void Deactivate()
     {
+        base.Deactivate();
         isActivated = false;
         objectSpeed = Vector3.zero;
     }
@@ -114,6 +118,8 @@ public class PathMovement : Actionable
         }
         else if (other.CompareTag("EntityTarget"))
         {
+            if (pickupEffects != null)
+                pickupEffects.Activate();
             other.GetComponent<EntityTarget>().controller.SetTargetParent(transform, Vector3.up);
         }
     }

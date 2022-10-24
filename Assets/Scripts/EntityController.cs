@@ -13,6 +13,9 @@ public class EntityController : MonoBehaviour
 
     public bool followWhenReleased = true;
     public float dragWhenGrabbed = 5.0f;
+
+    public bool wasDraged = false;
+
     private float dragWhenReleased;
 
     [HideInInspector] public Rigidbody rb;
@@ -31,6 +34,7 @@ public class EntityController : MonoBehaviour
             if (isGrabed)
             {
                 rb.drag = dragWhenGrabbed;
+                wasDraged = true;
             }
             else
             {
@@ -78,5 +82,6 @@ public class EntityController : MonoBehaviour
         {
             target.parent = transform;
         }
+        wasDraged = false;
     }
 }

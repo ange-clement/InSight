@@ -5,7 +5,7 @@ using UnityEngine;
 public class ResetEntity : ActionableByVision
 {
     public EntityController controller;
-    public PlayParticleAndSound effect;
+    public PlayEffects effect;
 
     private void Start()
     {
@@ -19,13 +19,10 @@ public class ResetEntity : ActionableByVision
 
     public override void Deactivate()
     {
-        if (effect != null && !effect.isPlaying() && Vector3.SqrMagnitude(transform.position - controller.transform.position) > 1.0f)
+        if (effect != null && controller.wasDraged)
         {
-            if (Vector3.SqrMagnitude(transform.position - effect.transform.position) > 1.0f)
-            {
-                effect.Activate();
-            }
             effect.transform.position = transform.position;
+            effect.Activate();
         }
 
         transform.rotation = Quaternion.identity;

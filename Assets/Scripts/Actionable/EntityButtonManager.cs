@@ -7,11 +7,15 @@ public class EntityButtonManager : ActionableByEnergy
     public Actionable[] actions;
     public Actionable[] invertedActions;
 
+    /*public PlayEffects effectActivate;
+    public PlayEffects effectDeactivate;*/
+
     public int nbInZone = 0;
     public int activateNb = 1;
 
     public override void Activate(GameObject collisionObject)
     {
+        base.Activate(collisionObject);
         nbInZone++;
         if (nbInZone == activateNb)
         {
@@ -28,6 +32,7 @@ public class EntityButtonManager : ActionableByEnergy
 
     public override void Deactivate(GameObject collisionObject)
     {
+        base.Deactivate(collisionObject);
         nbInZone--;
         if (nbInZone != activateNb)
         {
