@@ -14,6 +14,7 @@ public class PathMovement : Actionable
     public bool isActivated = false;
 
     public PlayEffects pickupEffects;
+    public PlayEffects movingEffects;
 
 
     private Transform target;
@@ -28,12 +29,16 @@ public class PathMovement : Actionable
     public override void Activate()
     {
         base.Activate();
+        if (movingEffects != null)
+            movingEffects.Activate();
         isActivated = true;
     }
 
     public override void Deactivate()
     {
         base.Deactivate();
+        if (movingEffects != null)
+            movingEffects.Deactivate();
         isActivated = false;
         objectSpeed = Vector3.zero;
     }
@@ -95,6 +100,9 @@ public class PathMovement : Actionable
                 transform.position += objectSpeed * Time.deltaTime;
 
                 pass = false;
+
+                if (movingEffects != null)
+                    movingEffects.setVolume(speed / maxSpeed);
             }
             if (rotationAngle > 5f)
             {

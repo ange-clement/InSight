@@ -58,6 +58,7 @@ public class EntityController : MonoBehaviour
             if (magnitude > 0.05f)
             {
                 rb.AddForce(direction.normalized* Mathf.Clamp((magnitude+1.0f) * 2.0f, 0, maxForce), ForceMode.Acceleration);
+                wasDraged = true;
             }
         }
     }
