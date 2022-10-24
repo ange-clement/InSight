@@ -30,11 +30,20 @@ public static class LevelData
 
     public static void ReadLevelData()
     {
-        string json = System.IO.File.ReadAllText(Path);
 
-        SaveData saveData = JsonUtility.FromJson<SaveData>(json);
+        if (System.IO.File.Exists(Path))
+        {
+            string json = System.IO.File.ReadAllText(Path);
 
-        MaxLevel = saveData.MaxLevel;
+            SaveData saveData = JsonUtility.FromJson<SaveData>(json);
+
+            MaxLevel = saveData.MaxLevel;
+        }
+        else
+        {
+            MaxLevel = 0;
+            SaveLevelData();
+        }
     }
 
     public static void LoadNextLevel()
