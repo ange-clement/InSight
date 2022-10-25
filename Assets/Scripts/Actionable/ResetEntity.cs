@@ -25,7 +25,7 @@ public class ResetEntity : ActionableByVision
             effect.Activate();
         }
 
-        transform.rotation = Quaternion.identity;
+        transform.localRotation = Quaternion.identity;
         transform.position = controller.generator.position;
         controller.target.position = controller.generator.position;
         //controller.rb.ResetInertiaTensor();
