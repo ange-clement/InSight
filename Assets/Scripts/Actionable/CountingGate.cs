@@ -9,11 +9,12 @@ public class CountingGate : Actionable
 
     public Actionable[] events;
     public Actionable[] invertedEvents;
-    public override void Activate()
+
+    public void CheckChange()
     {
-        nbActivate++;
         if (nbActivate == nbToActivate)
         {
+            base.Activate();
             foreach (Actionable eventManager in events)
             {
                 eventManager.Activate();
@@ -25,6 +26,7 @@ public class CountingGate : Actionable
         }
         else
         {
+            base.Deactivate();
             foreach (Actionable eventManager in events)
             {
                 eventManager.Deactivate();
@@ -35,31 +37,15 @@ public class CountingGate : Actionable
             }
         }
     }
+    public override void Activate()
+    {
+        nbActivate++;
+        CheckChange();
+    }
 
     public override void Deactivate()
     {
         nbActivate--;
-        if (nbActivate == nbToActivate)
-        {
-            foreach (Actionable eventManager in events)
-            {
-                eventManager.Activate();
-            }
-            foreach (Actionable eventManager in invertedEvents)
-            {
-                eventManager.Deactivate();
-            }
-        }
-        else
-        {
-            foreach (Actionable eventManager in events)
-            {
-                eventManager.Deactivate();
-            }
-            foreach (Actionable eventManager in invertedEvents)
-            {
-                eventManager.Activate();
-            }
-        }
+        CheckChange();
     }
 }
