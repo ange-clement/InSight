@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 6504754}
   - component: {fileID: 20596046}
   m_Layer: 0
-  m_Name: floor_2_no_lattice
+  m_Name: floor_2_corridor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
