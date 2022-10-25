@@ -38,9 +38,13 @@ public class PlayerGrab : MonoBehaviour
 
                     pointer.color = grabingColor;
                 }
-                else if (hit.collider.CompareTag("Camera"))
+                else
                 {
-                    hit.transform.SendMessage("Activate");
+                    ActionableByPlayerClic action = hit.collider.GetComponent<ActionableByPlayerClic>();
+                    if (action != null)
+                    {
+                        action.Activate();
+                    }
                 }
             }
         }
