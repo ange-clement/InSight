@@ -30,7 +30,6 @@ public static class LevelData
 
     public static void ReadLevelData()
     {
-
         if (System.IO.File.Exists(Path))
         {
             string json = System.IO.File.ReadAllText(Path);
@@ -48,12 +47,14 @@ public static class LevelData
 
     public static void LoadNextLevel()
     {
-        Level = (Level + 1) % SceneManager.sceneCountInBuildSettings;
+        Level = Mathf.Min((Level + 1), SceneManager.sceneCountInBuildSettings);
         LoadLevel();
     }
 
     public static void LoadLevel()
     {
+
+        Debug.Log("loading level " + Level);
         SceneManager.LoadScene(Level);
         if (Level > MaxLevel)
         {
