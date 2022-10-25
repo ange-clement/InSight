@@ -13,10 +13,12 @@ public class MoveAndBack : Actionable
     public bool open = false;
     public override void Activate()
     {
+        base.Activate();
         open = true;
     }
     public override void Deactivate()
     {
+        base.Deactivate();
         open = false;
     }
 

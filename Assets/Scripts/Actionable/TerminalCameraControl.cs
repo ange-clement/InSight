@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraControl : ActionableByPlayerClic
+public class TerminalCameraControl : ActionableByPlayerClic
 {
     public Camera attachedCamera;
+    public Transform cameraModel;
+    public TriggerOnTag checkPlayer;
 
     public float sens = 200f;
     public float yRotationLimit = 80f;
@@ -19,8 +21,8 @@ public class CameraControl : ActionableByPlayerClic
     {
         hasControl = false;
         playerCameraControl = FindObjectOfType<PlayerCameraControl>();
-        rotation.x = transform.eulerAngles.y;
-        rotation.y = transform.eulerAngles.x;
+        rotation.x = cameraModel.transform.eulerAngles.y;
+        rotation.y = cameraModel.transform.eulerAngles.x;
         if (rotation.y > 180)
         {
             rotation.y = rotation.y - 360;
@@ -30,16 +32,17 @@ public class CameraControl : ActionableByPlayerClic
 
     public override void Activate()
     {
-        hasControl = true;
-        playerCameraControl.GiveControl();
-        attachedCamera.enabled = true;
+        if (checkPlayer.isIn)
+        {
+            hasControl = true;
+            playerCameraControl.GiveControl();
+        }
     }
 
     public override void Deactivate()
     {
         hasControl = false;
         playerCameraControl.TakeControl();
-        attachedCamera.enabled = false;
     }
 
     private void Update()
@@ -50,12 +53,12 @@ public class CameraControl : ActionableByPlayerClic
             rotation.y -= Input.GetAxis("Mouse Y") * sens * Time.deltaTime;
             rotation.y = Mathf.Clamp(rotation.y, -yRotationLimit, yRotationLimit);
 
-            transform.localRotation = Quaternion.AngleAxis(rotation.x, Vector3.up) * Quaternion.AngleAxis(rotation.y, Vector3.right);
+            cameraModel.transform.rotation = Quaternion.AngleAxis(rotation.x, Vector3.up) * Quaternion.AngleAxis(rotation.y, Vector3.right);
 
             if (Input.GetButtonDown("Fire1"))
             {
                 Deactivate();
             }
         }
-    } 
+    }
 }

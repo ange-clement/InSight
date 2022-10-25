@@ -6,6 +6,7 @@ public class TriggerOnTag : MonoBehaviour
 {
     public string tagToTrigger;
     public bool callsDeactivate = true;
+    [HideInInspector] public bool isIn = false;
 
     public Actionable[] events;
     public Actionable[] invertedEvents;
@@ -23,6 +24,7 @@ public class TriggerOnTag : MonoBehaviour
                 action.Deactivate();
             }
         }
+        isIn = true;
     }
 
     private void DeactivateAllIfTag(string tag)
@@ -38,6 +40,7 @@ public class TriggerOnTag : MonoBehaviour
                 action.Activate();
             }
         }
+        isIn = false;
     }
 
     private void OnTriggerEnter(Collider other)
