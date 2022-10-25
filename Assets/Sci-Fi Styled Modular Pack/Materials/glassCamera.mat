@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: glass
+  m_Name: glassCamera
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -69,9 +69,9 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 10
     - _GlossMapScale: 1
-    - _Glossiness: 0.112
+    - _Glossiness: 0.857
     - _GlossyReflections: 1
-    - _Metallic: 0
+    - _Metallic: 0.337
     - _Mode: 3
     - _OcclusionStrength: 1
     - _Parallax: 0.02
@@ -81,6 +81,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 0.102941155, g: 0.102941155, b: 0.102941155, a: 0.247}
+    - _Color: {r: 0.7264151, g: 0.72413075, b: 0.72413075, a: 0.5647059}
     - _EmissionColor: {r: 0.032, g: 0.032, b: 0.032, a: 1}
   m_BuildTextureStacks: []
