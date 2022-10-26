@@ -167,7 +167,7 @@ Transform:
   - {fileID: 9121091609302443466}
   - {fileID: 7901721009833219347}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &9121091608483223348
 MeshFilter:
@@ -283,6 +283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagToTrigger: Player
   callsDeactivate: 1
+  isIn: 0
   events:
   - {fileID: 9121091609716884384}
   invertedEvents: []
@@ -300,6 +301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagToTrigger: Camera
   callsDeactivate: 1
+  isIn: 0
   events:
   - {fileID: 9121091609302443467}
   invertedEvents: []

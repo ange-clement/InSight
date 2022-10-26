@@ -228,8 +228,8 @@ MonoBehaviour:
   effectDeactivate: {fileID: 7673760745105333458}
   objectToMove: {fileID: 1216242924}
   speed: 10
-  restPos: {x: 0, y: 1.933, z: 0}
-  activatedPos: {x: 0, y: 1.959, z: 0}
+  restPos: {x: 0, y: 1.933, z: 0.081}
+  activatedPos: {x: 0, y: 1.959, z: 0.081}
   open: 0
 --- !u!1 &1936984963
 GameObject:
@@ -390,7 +390,7 @@ Transform:
   - {fileID: 3345930733251367909}
   - {fileID: 4676408770721833384}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &4676408770721833385
 GameObject:
