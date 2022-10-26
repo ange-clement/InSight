@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
+    public int startLevelIndex = 2;
+
     public Button imgStart;
     public Button imgContinue;
     public Button imgLevelSelect;
@@ -35,7 +37,7 @@ public class MenuManager : MonoBehaviour
 
     public void ButtonStart()
     {
-        LevelData.Level = 1;
+        LevelData.Level = startLevelIndex;
         LaunchFade();
     }
 
@@ -50,7 +52,7 @@ public class MenuManager : MonoBehaviour
         MainMenu.SetActive(false);
         LevelMenu.SetActive(true);
 
-        for (int i = 1; i < LevelData.MaxLevel; i++)
+        for (int i = startLevelIndex; i < LevelData.MaxLevel; i++)
         {
             int level = i;
             Button b = Instantiate<Button>(butonLevelPrefab, LevelMenu.transform);

@@ -6,14 +6,23 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TestChangementNiveauAnge/Level_1_test.unity
-    guid: 2c97a4701cc5cf547b578c91d56f1fa4
+    path: Assets/Scenes/FirstCinematic.unity
+    guid: 1a63ec548059538438d7ef776a39f7ce
   - enabled: 1
-    path: Assets/Scenes/TestChangementNiveauAnge/Level_2_test.unity
-    guid: 7da86b353f66f5640ad3b057045e0059
+    path: Assets/Scenes/MainMenu.unity
+    guid: 682aa6e4a97688b47b473dff3d5bf78a
   - enabled: 1
-    path: Assets/Scenes/TestChangementNiveauAnge/TestCinemachine.unity
-    guid: 5ab129994fb8c2349bee8c81bb92ffec
+    path: Assets/Scenes/Chapter_1/level_1_room.unity
+    guid: c907043185480e641bbe16612ac23b98
+  - enabled: 1
+    path: Assets/Scenes/Chapter_1/transition_12.unity
+    guid: 6eb0ecef9372d424186c8a753526e022
+  - enabled: 1
+    path: Assets/Scenes/Chapter_2/Level_Robot.unity
+    guid: 101a92fd8aa6a954e97d1f1899df0c7f
+  - enabled: 1
+    path: Assets/Scenes/Chapter_3/level_1_room.unity
+    guid: 9f3c50930d82e9a41965489f84dcdd86
   - enabled: 1
     path: Assets/Scenes/TestChangementNiveauAnge/TestSceneAnge.unity
     guid: c77ca2397e76e7f44981d9a7b2d5f996
