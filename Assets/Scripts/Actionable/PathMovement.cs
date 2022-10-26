@@ -17,14 +17,14 @@ public class PathMovement : Actionable
     public PlayEffects movingEffects;
 
 
-    private Transform target;
-    private int currentTarget = 0;
-    private float currentDecelDist;
+    protected Transform target;
+    protected int currentTarget = 0;
+    protected float currentDecelDist;
 
-    private float speed = 0f;
+    protected float speed = 0f;
 
     public Vector3 ObjectSpeed { get => objectSpeed; }
-    private Vector3 objectSpeed;
+    protected Vector3 objectSpeed;
 
     public override void Activate()
     {
@@ -43,7 +43,7 @@ public class PathMovement : Actionable
         objectSpeed = Vector3.zero;
     }
 
-    private void UpdateTarget()
+    protected void UpdateTarget()
     {
         speed = minSpeed;
 
@@ -118,7 +118,7 @@ public class PathMovement : Actionable
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
@@ -132,7 +132,7 @@ public class PathMovement : Actionable
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    protected void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
