@@ -7,6 +7,8 @@ public class TeleportEventnbTimes : MonoBehaviour
 {
     public Actionable[] actions;
 
+    public GameObject eventWeird;
+
     public Transform posToGo;
     public int nbTimes = 3;
 
@@ -24,10 +26,10 @@ public class TeleportEventnbTimes : MonoBehaviour
             CharacterController c = other.GetComponent<CharacterController>();
 
             c.enabled = false;
-            c.transform.position = posToGo.position;
+            c.transform.position = new Vector3(c.transform.position.x, c.transform.position.y ,posToGo.position.z);
             c.enabled = true;
 
-            cptTime++;
+
 
             if(cptTime == nbTimes){
                 foreach (Actionable action in actions)
@@ -35,6 +37,15 @@ public class TeleportEventnbTimes : MonoBehaviour
                     action.Activate();
                 }
             }
+            else
+            {
+                if(cptTime == nbTimes - 1)
+                {
+                    eventWeird.SetActive(true);
+                }
+            }
+
+            cptTime++;
         }
     }
 }
